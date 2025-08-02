@@ -1,0 +1,5 @@
+azure-serverless-file-upload-alert/
+├── bicep/
+├── workflows/
+├── .github/workflows/
+└── README.md

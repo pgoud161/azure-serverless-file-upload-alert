@@ -1,0 +1,21 @@
+name: Bicep Syntax Check
+
+on:
+  push:
+    paths:
+      - 'bicep/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Azure CLI
+        uses: azure/setup-azurecli@v1
+
+      - name: Validate Bicep file
+        run: az bicep build --file bicep/main.bicep

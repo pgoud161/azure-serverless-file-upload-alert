@@ -1,0 +1,31 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowDefinition.json#",
+    "actions": {
+      "Send_an_email_notification": {
+        "inputs": {
+          "body": "A file was uploaded to Blob Storage.",
+          "subject": "Azure File Upload Notification",
+          "to": "your-email@example.com",
+          "type": "SendEmail"
+        },
+        "runAfter": {},
+        "type": "Action"
+      }
+    },
+    "triggers": {
+      "When_a_blob_is_added_or_modified": {
+        "metadata": {
+          "blobPath": "/uploads/{name}"
+        },
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 5
+        },
+        "type": "Http"
+      }
+    },
+    "contentVersion": "1.0.0.0"
+  },
+  "parameters": {}
+}
